@@ -31,7 +31,15 @@
                                 <p class="mb-0">
                                     <span class="text-muted d-none d-md-inline-block">Posted </span>
                                     <a href="#" class="font-weight-bold">{{ item.creator.anonymous ? 'Anonymous user' : item.creator.user.name }}</a>
-                                    <!-- TODO: Add stars ratio -->
+                                    <span>
+                                        <ng-container *ngFor="let star of getCreatorRate(item)">
+                                            <i *ngIf="star" class="text-warning bi bi-star-fill"></i>
+                                            <i *ngIf="!star" class="text-warning bi bi-star"></i>
+                                        </ng-container>
+                                    </span>
+                                    <span class="text-muted">
+                                        ({{ item.creator.opinions }})
+                                    </span>
                                 </p>
                                 <p class="mb-0">
                                     <i class="mr-1 bi bi-calendar-week"></i>
@@ -40,8 +48,6 @@
                                     </span>
                                 </p>
                             </div>
-                            <!-- <div class="row-- w-100 mx-0 d-flex flex-column-reverse flex-md-row"> -->
-                            <!-- </div> -->
                         </div>
                     </div>
                     <div class="px-4 d-flex">
@@ -74,10 +80,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- <p>{{ item.id }}</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non facilis, deleniti quas repudiandae qui quis est quo eligendi minus asperiores sequi nam sed suscipit dolore ex mollitia magnam, quos laboriosam?</p> -->
             </div>
         </div>
     </div>

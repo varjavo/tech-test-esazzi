@@ -32,6 +32,14 @@ export class AppComponent {
     }
   }
 
+  getCreatorRate(item: any): boolean[] {
+    const rate = [];
+    for (let i = 0; i < 5; i++) {
+      rate[i] = Math.floor(item.creator.rate) > i;
+    }
+    return rate;
+  }
+
   /**
    * Local method to request a new set of items from `ApiService`
    */

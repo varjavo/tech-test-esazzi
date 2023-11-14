@@ -29,7 +29,8 @@ export class ApiService {
         creator: {
           anonymous: true,
           user: null,
-          rate: 4.5,
+          rate: Math.random() * 4 + 1,
+          opinions: Math.floor(Math.random() * 7) || null,
         },
         createdAt: new Date().toISOString(),
         assignees: [],
