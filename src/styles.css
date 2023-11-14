@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #ededed;
+}
+a{
+    color: #0c8fa2;
+}
+a:hover{
+    color: #096c7b;
+}
+
+.btn-info{
+    background-color: #0c8fa2;
+    border-color: #0c8fa2;
+}
+.btn-info:focus,
+.btn-info:not(:disabled):not(.disabled).active, 
+.btn-info:not(:disabled):not(.disabled):active{
+    background-color: #096c7b;
+    border-color: #096c7b;
+
+}
