@@ -10,6 +10,7 @@ export class AppComponent {
   cardsList: any[] = [];
   currentPageNumber = 0;
   currentPageSize = 10;
+  canLoadMoreItems = true;
 
   constructor(private apiService: ApiService) {
     this.getItems();
@@ -20,15 +21,17 @@ export class AppComponent {
    * Request a new set of items from `ApiService`
    */
   onBottomScrollReached() {
-    this.currentPageNumber++;
-    this.getItems();
-    if (!environment.production) {
-      console.log(
-        `Triggered at ${(
-          (100 * window.scrollY) /
-          document.body.clientHeight
-        ).toFixed(1)}%`
-      );
+    if (this.canLoadMoreItems) {
+      this.currentPageNumber++;
+      this.getItems();
+      if (!environment.production) {
+        console.log(
+          `Triggered at ${(
+            (100 * window.scrollY) /
+            document.body.clientHeight
+          ).toFixed(1)}%`
+        );
+      }
     }
   }
 
@@ -48,6 +51,9 @@ export class AppComponent {
       .getItems(this.currentPageNumber, this.currentPageSize)
       .subscribe((getItemsResponse: any[]) => {
         this.cardsList = [...this.cardsList, ...getItemsResponse];
+        if (getItemsResponse.length === 0) {
+          this.canLoadMoreItems = false;
+        }
       });
   }
 }
