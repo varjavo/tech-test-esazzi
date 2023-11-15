@@ -1,11 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-12 py-4" 
+            customEndlessScroll    
+            [distance]=".2"
+            (bottomScrollReached)="onBottomScrollReached()">
+            <!-- ! Used with ngx-infinite-scroll package
             infiniteScroll 
             [immediateCheck]="true"
             [infiniteScrollDistance]="1"
             [infiniteScrollThrottle]="50"
-            (scrolled)="onBottomScrollReached()">
+            (scrolled)="onBottomScrollReached()"
+             -->
             <div class="card rounded mb-4 shadow-sm" *ngFor="let item of cardsList">
                 <div class="pb-5 pb-md-3">
                     <div class="px-3 pb-4 d-flex">
